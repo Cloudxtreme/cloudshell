@@ -1,4 +1,4 @@
 cloudshell
 ==========
 
-A menu-driven command shell for Rackspace Cloud.
+A command shell for Rackspace Cloud.
