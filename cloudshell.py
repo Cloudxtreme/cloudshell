@@ -32,21 +32,48 @@ def menu():
 	listservers()
 	time.sleep(1)
 	os.system('clear')	
-
     elif int(choice) == 2:
-        print "Creating servers"
+        print
+	time.sleep(1)
+	print "Creating servers" # replace with function call
+	time.sleep(1)
+	os.system('clear')
     elif int(choice) == 3:
-        print "Creating Load Balancer"
+	print
+	time.sleep(1)
+        print "Creating Load Balancer" # replace with function call
+	time.sleep(1)
+	os.system('clear')
     elif int(choice) == 4:
-        print "Cloud Files"
+	print
+	time.sleep(1)
+        print "Cloud Files" # replace with function call
+	time.sleep(1)
+	os.system('clear')
     elif int(choice) == 5:
-        print "DNS Options"
+	print
+	time.sleep(1)
+        print "DNS Options" # replace with function call
+	time.sleep(1)
+	os.system('clear')
     elif int(choice) == 6:
-        print "Databases"
+	print
+	time.sleep(1)
+        print "Databases" # replace with function call
+	time.sleep(1)
+	os.system('clear')
     elif int(choice) == 7:
-        print "Backup"
+	print
+	time.sleep(1)
+        print "Backup" # replace with function call
+	time.sleep(1)
+	os.system('clear')
     else:
+	print
+	time.sleep(1)
         print "Ivalid choice! Try again!"
+	time.sleep(1)
+	os.system('clear')
     return
 
 os.system('clear')
