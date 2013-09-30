@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import pyrax
+from cloudfunctions import listservers
 import os
 import time
 
@@ -26,7 +27,12 @@ def menu():
         """
     choice = raw_input("Please enter a command (h for help): ")
     if int(choice) == 1:
-        print "Listing servers..."
+        print
+        time.sleep(1)
+	listservers()
+	time.sleep(1)
+	os.system('clear')	
+
     elif int(choice) == 2:
         print "Creating servers"
     elif int(choice) == 3:
@@ -42,4 +48,7 @@ def menu():
     else:
         print "Ivalid choice! Try again!"
     return
-menu()
+
+os.system('clear')
+while True:
+    menu()
