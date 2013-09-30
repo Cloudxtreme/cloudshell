@@ -17,4 +17,3 @@ def listservers():
     for i in servers:
         print i.name
  	print
-os.system('clear')
