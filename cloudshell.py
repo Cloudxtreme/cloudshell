@@ -17,11 +17,11 @@ def menu():
     
         The following options are available:
     
-        1 - List Servers
-        2 - Create Servers
-        3 - Create Load Balancer
-        4 - Cloud Files
-        5 - DNS Options
+        1 - List Servers	  8 - SSH into a server
+        2 - Create Servers	  9 - Feature coming soon
+        3 - Create Load Balancer  10 - Feature coming soon
+        4 - Cloud Files		  11 - Feature coming soon
+        5 - DNS Options		  12 - Feature coming soon
         6 - Databases
         7 - Backup
         """
