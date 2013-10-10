@@ -17,3 +17,7 @@ def listservers():
     for i in servers:
         print i.name
  	print
+
+def createservers():
+    os.system('clear')
+    print "This does nothing yet"
