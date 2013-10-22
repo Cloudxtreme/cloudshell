@@ -20,4 +20,18 @@ def listservers():
 
 def createservers():
     os.system('clear')
-    print "This does nothing yet"
+    servers = {}
+    # We want Ubuntu 12.04 image and 512 slice
+    ubu_image = [img for img in cs.images.list()
+                    if "12.04" in img.name][0]
+    print("Ubuntu Image:"), ubu_image
+    flavor_512 = [flavor for flavor in cs.flavors.list()
+                    if flavor.ram == 512][0]
+    print("512 Flavor:"), flavor_512
+    count = int(raw_input("Enter the number of servers you want to create: "))
+    base_name = raw_input("Enter a base name for the server: ")
+    # Create the servers
+    print "Requesting " + str(count) + " Ubuntu 12.04 512MB servers"
+    for i in xrange(1, count):
+        name = '%s%s' % (base_name, i)
+        servers[name] = cs.servers.create(name, ubu_image.id, flavor_512.id)

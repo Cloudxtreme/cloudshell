@@ -2,12 +2,13 @@
 
 import pyrax
 from cloudfunctions import listservers
+from cloudfunctions import createservers
 import os
 import time
 
 def menu():
     print """
-    Welcome to CloudShell v1.0
+    Welcome to CloudShell v0.1.0
     
      .--. .-.    .--. .-..-..---.  .--. .-..-. .--. .-.   .-.   
     : .--': :   : ,. :: :: :: .  :: .--': :; :: .--': :   : :   
@@ -35,7 +36,7 @@ def menu():
     elif int(choice) == 2:
         print
 	time.sleep(1)
-	print "Creating servers" # replace with function call
+	createservers()
 	time.sleep(1)
 	os.system('clear')
     elif int(choice) == 3:
