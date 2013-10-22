@@ -32,6 +32,6 @@ def createservers():
     base_name = raw_input("Enter a base name for the server: ")
     # Create the servers
     print "Requesting " + str(count) + " Ubuntu 12.04 512MB servers"
-    for i in xrange(1, count):
+    for i in xrange(0, count):
         name = '%s%s' % (base_name, i)
         servers[name] = cs.servers.create(name, ubu_image.id, flavor_512.id)
