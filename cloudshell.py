@@ -31,7 +31,7 @@ def menu():
         print
         time.sleep(1)
 	listservers()
-	time.sleep(1)
+	time.sleep(5)
 	os.system('clear')	
     elif int(choice) == 2:
         print

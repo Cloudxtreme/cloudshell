@@ -15,7 +15,7 @@ def listservers():
     print
     servers =  cs.servers.list()
     for i in servers:
-        print i.name
+        print "Server: %s - IP: %s" % (i.name, i.accessIPv4)
  	print
 
 def createservers():
