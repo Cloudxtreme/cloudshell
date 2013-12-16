@@ -35,3 +35,21 @@ def createservers():
     for i in xrange(0, count):
         name = '%s%s' % (base_name, i)
         servers[name] = cs.servers.create(name, ubu_image.id, flavor_512.id)
+
+def connectServer():
+    os.system('clear')
+    print "Choose a server to connect to:"
+    print
+    x = 1
+    servers = cs.servers.list()
+    for i in servers:
+        print x, i.name
+        x += 1
+    selection = int(raw_input("Please choose a server: "))    
+
+
+#process = subprocess.Popen("ssh example.com ls", shell=True,
+#    stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+#output,stderr = process.communicate()
+#status = process.poll()
+#print output

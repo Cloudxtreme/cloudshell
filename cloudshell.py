@@ -3,6 +3,7 @@
 import pyrax
 from cloudfunctions import listservers
 from cloudfunctions import createservers
+from cloudfunctions import connectServer
 import os
 import time
 
@@ -69,6 +70,12 @@ def menu():
         print "Backup" # replace with function call
 	time.sleep(1)
 	os.system('clear')
+    elif int(choice) == 8:
+        print
+	time.sleep(1)
+	connectServer()
+        time.sleep(1)
+	os.system('clear') 
     else:
 	print
 	time.sleep(1)
