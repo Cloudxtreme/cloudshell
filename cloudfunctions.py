@@ -46,7 +46,10 @@ def connectServer():
         print x, i.name
         x += 1
     selection = int(raw_input("Please choose a server: "))    
-
+    if selection == 1 or selection == 2:
+        print "Logging into %s" % i.name
+    else:
+        print "Selection not found"
 
 #process = subprocess.Popen("ssh example.com ls", shell=True,
 #    stdout=subprocess.PIPE, stderr=subprocess.STDOUT)

@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 
 import pyrax
-from cloudfunctions import listservers
-from cloudfunctions import createservers
-from cloudfunctions import connectServer
+import cloudfunctions
 import os
 import time
 
@@ -31,13 +29,13 @@ def menu():
     if int(choice) == 1:
         print
         time.sleep(1)
-	listservers()
+        cloudfunctions.listservers()
 	time.sleep(5)
 	os.system('clear')	
     elif int(choice) == 2:
         print
 	time.sleep(1)
-	createservers()
+	cloudfunctions.createservers()
 	time.sleep(1)
 	os.system('clear')
     elif int(choice) == 3:
@@ -73,7 +71,7 @@ def menu():
     elif int(choice) == 8:
         print
 	time.sleep(1)
-	connectServer()
+	cloudfunctions.connectServer()
         time.sleep(1)
 	os.system('clear') 
     else:
