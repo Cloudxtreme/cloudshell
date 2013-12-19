@@ -39,6 +39,7 @@ def createservers(): # Fix this up so you can choose an image other than ubuntu
     base_name = raw_input("Enter a base name for the server: ")
     print "Creating %s %s servers with %s flavor" % (count, image.name, flavor.name)
     time.sleep(5)
+    cs.servers.create(base_name, image.id, flavor.id)
     # Create the servers
 #    print "Requesting " + str(count) + " Ubuntu 12.04 512MB servers"
 #    for i in xrange(0, count):
