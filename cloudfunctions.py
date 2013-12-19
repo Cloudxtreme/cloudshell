@@ -20,7 +20,6 @@ def listservers():
 def createservers(): # Fix this up so you can choose an image other than ubuntu
     os.system('clear')
     servers = {}
-    # We want Ubuntu 12.04 image and 512 slice
     ubu_image = [img for img in cs.images.list()
                     if "12.04" in img.name][0]
     print("Ubuntu Image:"), ubu_image
