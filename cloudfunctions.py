@@ -15,7 +15,7 @@ def listservers():
     print
     servers =  cs.servers.list()
     for i in servers:
-        print "Server: %s - IP: %s" % (i.name, i.accessIPv4)
+	print "Server: %s - IP: %s" % (i.name, i.accessIPv4)
  	print
 
 def createservers():
@@ -36,7 +36,7 @@ def createservers():
         name = '%s%s' % (base_name, i)
         servers[name] = cs.servers.create(name, ubu_image.id, flavor_512.id)
 
-def connectServer():
+def connectServer(): #TODO: Clean this up and make more awesome
     os.system('clear')
     print "Choose a server to connect to:"
     print
@@ -46,10 +46,20 @@ def connectServer():
         print x, i.name
         x += 1
     selection = int(raw_input("Please choose a server: "))    
-    if selection == 1 or selection == 2:
-        print "Logging into %s" % i.name
+    if selection == 1: # rework this
+        connectAction()
     else:
-        print "Selection not found"
+        print "Selection not found - Please make a valid selection"
+        time.sleep(5)
+        connectServer()
+
+def connectAction(): #TODO: Make the server selection actually work
+        servers = cs.servers.list()
+        print "Logging into %s" % servers[0].name # TODO: Add RS Bastion option *internal only*
+        ip = servers[0].accessIPv4
+	user = 'root@'
+        connection = user + ip
+ 	os.execlp('ssh', 'ssh', connection)
 
 #process = subprocess.Popen("ssh example.com ls", shell=True,
 #    stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
