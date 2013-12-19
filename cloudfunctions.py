@@ -13,7 +13,7 @@ def listservers():
     os.system('clear')
     print "Listing Servers:"
     print
-    servers =  cs.servers.list()
+    servers = cs.servers.list()
     for i in servers:
 	print "Server: %s - IP: %s" % (i.name, i.accessIPv4)
  	print
@@ -39,30 +39,16 @@ def createservers():
 def connectServer(): #TODO: Clean this up and make more awesome
     os.system('clear')
     print "Choose a server to connect to:"
-    print
-    x = 1
-    servers = cs.servers.list()
-    for i in servers:
-        print x, i.name
-        x += 1
-    selection = int(raw_input("Please choose a server: "))    
-    if selection == 1: # rework this
-        connectAction()
-    else:
-        print "Selection not found - Please make a valid selection"
-        time.sleep(5)
-        connectServer()
+    servers = pyrax.cloudservers.servers.list()
+    for pos, server in enumerate(servers):
+        pos += 1
+        print "%s: %s" % (pos, server.name)
+    choice = int(raw_input("Enter a number: "))
+    choice -= 1
+    server = servers[choice]
+    print "Connecting to  %s " % server.name
+    ip = servers[choice].accessIPv4
+    user = 'root@'
+    connection = user + ip
+    os.execlp('ssh', 'ssh', connection)
 
-def connectAction(): #TODO: Make the server selection actually work
-        servers = cs.servers.list()
-        print "Logging into %s" % servers[0].name # TODO: Add RS Bastion option *internal only*
-        ip = servers[0].accessIPv4
-	user = 'root@'
-        connection = user + ip
- 	os.execlp('ssh', 'ssh', connection)
-
-#process = subprocess.Popen("ssh example.com ls", shell=True,
-#    stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-#output,stderr = process.communicate()
-#status = process.poll()
-#print output
