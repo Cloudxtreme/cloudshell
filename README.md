@@ -8,15 +8,10 @@ A menu-driven command line script for Rackspace Cloud.
 ## Requirements
 
 * A Rackspace Cloud account
-        * username
-        * API key
+        - username
+        - API key
 * Python 2.7
-
 * [Pyrax](https://github.com/rackspace/pyrax)
-
-The best way to install **pyrax** is by using [pip](http://www.pip-installer.org/en/latest/) to get the latest official release:
-
-        pip install pyrax
 
 Setup: 
 
@@ -33,5 +28,8 @@ Activate the virtual environment:
 
         source cloud/bin/activate
 
+The best way to install **pyrax** is by using [pip](http://www.pip-installer.org/en/latest/) to get the latest official release:
+
+        pip install pyrax
 
 
