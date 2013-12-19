@@ -6,7 +6,6 @@ import os
 pyrax.settings.set('identity_type', 'rackspace')
 creds_file = os.path.expanduser("~/.rackspace_cloud_credentials")
 pyrax.set_credential_file(creds_file)
-
 cs = pyrax.cloudservers
 
 def listservers():
@@ -39,7 +38,7 @@ def createservers():
 def connectServer(): #TODO: Clean this up and make more awesome
     os.system('clear')
     print "Choose a server to connect to:"
-    servers = pyrax.cloudservers.servers.list()
+    servers = cs.servers.list()
     for pos, server in enumerate(servers):
         pos += 1
         print "%s: %s" % (pos, server.name)
