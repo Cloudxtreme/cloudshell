@@ -20,12 +20,20 @@ def listservers():
 def createservers(): # Fix this up so you can choose an image other than ubuntu
     os.system('clear')
     servers = {}
-    ubu_image = [img for img in cs.images.list()
-                    if "12.04" in img.name][0]
-    print("Ubuntu Image:"), ubu_image
-    flavor_512 = [flavor for flavor in cs.flavors.list()
-                    if flavor.ram == 512][0]
-    print("512 Flavor:"), flavor_512
+#    ubu_image = [img for img in cs.images.list()
+#                    if "12.04" in img.name][0]
+#    print("Ubuntu Image:"), ubu_image
+#    flavor_512 = [flavor for flavor in cs.flavors.list()
+#                    if flavor.ram == 512][0]
+#    print("512 Flavor:"), flavor_512
+    images = cs.images.list()
+    for pos, i in enumerate(images):
+        pos += 1
+        print pos, i.name
+    choice  = int(raw_input("Which image would you like to use?: "))
+    choice -= 1
+    image = images[choice]
+    print "You picked the %s " % image.name
     count = int(raw_input("Enter the number of servers you want to create: "))
     base_name = raw_input("Enter a base name for the server: ")
     # Create the servers
