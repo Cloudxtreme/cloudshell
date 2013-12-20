@@ -10,12 +10,39 @@ cs = pyrax.cloudservers
 
 def listservers():
     os.system('clear')
-    print "Listing Servers:"
-    print
-    servers = cs.servers.list()
-    for i in servers:
-	print "Server: %s - IP: %s" % (i.name, i.accessIPv4)
- 	print
+    print "Listing Servers in DFW region:"
+    print "=============================="
+    servers_dfw = cs.servers.list()
+    if servers_dfw:
+        for i in servers_dfw:
+            print "Server: %s - IP: %s" % (i.name, i.accessIPv4)
+   	    print
+    else:
+        print "No servers found in DFW"
+
+    print "Listing Servers in IAD region:"
+    print "=============================="
+    cs_iad = pyrax.connect_to_cloudservers(region="IAD")
+    servers_iad = cs_iad.servers.list()
+    if servers_iad:
+        for i in servers_iad:
+            print "Server: %s - IP: %s" % (i.name, i.accessIPv4)
+            print
+    else:
+        print "No servers found in IAD region"
+        print
+
+    print "Listing servers in ORD region:"
+    print "=============================="
+    cs_ord = pyrax.connect_to_cloudservers(region="ORD")
+    servers_ord = cs_ord.servers.list()
+    if servers_ord:
+        for i in servers_ord:
+            print "Server: %s - IP: %s" % (i.name, i.accessIPv4)
+            print
+    else:
+        print "No servers found in ORD region"
+        print
 
 def createservers():
     os.system('clear')
