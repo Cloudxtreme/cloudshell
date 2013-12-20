@@ -19,7 +19,7 @@ def listservers():
 
 def createservers(): # Fix this up so you can choose an image other than ubuntu
     os.system('clear')
-    servers = {} # REMOVE
+    servers = {}
     images = cs.images.list()
     for pos, img in enumerate(images):
         pos += 1
