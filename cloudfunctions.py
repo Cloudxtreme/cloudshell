@@ -8,41 +8,22 @@ creds_file = os.path.expanduser("~/.rackspace_cloud_credentials")
 pyrax.set_credential_file(creds_file)
 cs = pyrax.cloudservers
 
+def changeregion():
+    region = cs.client.region_name
+    print "Your current region is set to %s" % region
+
 def listservers():
     os.system('clear')
-    print "Listing Servers in DFW region:"
+    print "Listing Servers:"
     print "=============================="
-    servers_dfw = cs.servers.list()
-    if servers_dfw:
-        for i in servers_dfw:
+    servers = cs.servers.list()
+    region = cs.client.region_name
+    if servers:
+        for i in servers:
             print "Server: %s - IP: %s" % (i.name, i.accessIPv4)
    	    print
     else:
-        print "No servers found in DFW"
-
-    print "Listing Servers in IAD region:"
-    print "=============================="
-    cs_iad = pyrax.connect_to_cloudservers(region="IAD")
-    servers_iad = cs_iad.servers.list()
-    if servers_iad:
-        for i in servers_iad:
-            print "Server: %s - IP: %s" % (i.name, i.accessIPv4)
-            print
-    else:
-        print "No servers found in IAD region"
-        print
-
-    print "Listing servers in ORD region:"
-    print "=============================="
-    cs_ord = pyrax.connect_to_cloudservers(region="ORD")
-    servers_ord = cs_ord.servers.list()
-    if servers_ord:
-        for i in servers_ord:
-            print "Server: %s - IP: %s" % (i.name, i.accessIPv4)
-            print
-    else:
-        print "No servers found in ORD region"
-        print
+        print "No servers found in %s region" % region
 
 def createservers():
     os.system('clear')
