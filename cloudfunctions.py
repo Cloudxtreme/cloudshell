@@ -17,7 +17,7 @@ def listservers():
 	print "Server: %s - IP: %s" % (i.name, i.accessIPv4)
  	print
 
-def createservers(): # Fix this up so you can choose an image other than ubuntu
+def createservers():
     os.system('clear')
     servers = {}
     images = cs.images.list()
