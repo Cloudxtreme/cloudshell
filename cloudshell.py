@@ -17,7 +17,7 @@ def menu():
     
         The following options are available:
     
-        1 - List Servers	  8 - SSH into a server
+        1 - List Servers	  8 - Open SSH connection
         2 - Create Servers	  9 - Feature coming soon
         3 - Create Load Balancer  10 - Feature coming soon
         4 - Cloud Files		  11 - Feature coming soon
