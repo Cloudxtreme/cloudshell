@@ -44,8 +44,7 @@ def createservers():
         name = '%s%s' % (base_name, i)
         servers[name] = cs.servers.create(name, image.id, flavor.id)
     
-
-def connectServer(): #TODO: Clean this up and make more awesome
+def connectServer():
     os.system('clear')
     print "Choose a server to connect to:"
     servers = cs.servers.list()
@@ -57,7 +56,7 @@ def connectServer(): #TODO: Clean this up and make more awesome
     server = servers[choice]
     print "Connecting to  %s " % server.name
     ip = servers[choice].accessIPv4
-    user = 'root@'
-    connection = user + ip
+    user = raw_input("Username: ")
+    connection = user + '@' + ip
     os.execlp('ssh', 'ssh', connection)
 
