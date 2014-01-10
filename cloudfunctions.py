@@ -73,7 +73,7 @@ def connectServer():
 
 def ansibleAdd():
     os.system('clear')
-    print "Choose a server to add to the Ansible master hosts: "
+    print "Choose a server to add to the Ansible master host: "
     servers = cs.servers.list()
     for pos, server in enumerate(servers):
         pos += 1
@@ -81,5 +81,14 @@ def ansibleAdd():
     choice = int(raw_input("Enter a number: "))
     choice -= 1
     server = servers[choice]
+    hostentry = "%s %s" % (server.accessIPv4, server.name)
+    print hostentry
     print "Creating /etc/hosts entry for %s" % server.name
+    # TODO: put the entry in local /etc/hosts file 
     print "Creating /etc/ansible/hosts entry for %s" % server.name
+    # TODO: Add the node name to ansible hosts file under the correct group
+    ansiblehost = server.name
+    ansiblegroup = raw_input("What group do you want to add the ansible node to: ")
+    print "Adding %s to /etc/ansible/hosts as part of the %s group: " % (ansiblehost, ansiblegroup)
+    raw_input("Press any key to continue: ")
+
