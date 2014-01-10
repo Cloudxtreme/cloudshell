@@ -48,8 +48,6 @@ def createservers():
     sshkey = {"/root/.ssh/authorized_keys": content}
     if count == 1:
 	name = base_name
-#        content = open(os.path.expanduser('~/.ssh/id_rsa.pub')).read()
-#        sshkey = {"/root/.ssh/authorized_keys": content}
         servers[name] = cs.servers.create(name, image.id, flavor.id, files=sshkey)
     else:
         for i in xrange(0, count):
