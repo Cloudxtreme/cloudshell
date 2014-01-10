@@ -88,7 +88,8 @@ def ansibleAdd():
     print hostentry
     print "Creating /etc/hosts entry for %s" % server.name
     # TODO: put the entry in local /etc/hosts file 
-    os.path.walk('/etc/hosts', append(hostentry))
+    with open("/etc/hosts", "a") as myfile:
+        myfile.write(hostentry)
     print "Creating /etc/ansible/hosts entry for %s" % server.name
     # TODO: Add the node name to ansible hosts file under the correct group
     ansiblehost = server.name
