@@ -87,13 +87,15 @@ def ansibleAdd():
     hostentry = "%s %s\n" % (server.accessIPv4, server.name)
     print hostentry
     print "Creating /etc/hosts entry for %s" % server.name
-    # TODO: put the entry in local /etc/hosts file 
-    with open("/etc/hosts", "a") as myfile:
-        myfile.write(hostentry)
-    print "Creating /etc/ansible/hosts entry for %s" % server.name
+    with open("/etc/hosts", "a") as hostsfile:
+        hostsfile.write(hostentry)
     # TODO: Add the node name to ansible hosts file under the correct group
     ansiblehost = server.name
     ansiblegroup = raw_input("What group do you want to add the ansible node to: ")
     print "Adding %s to /etc/ansible/hosts as part of the %s group: " % (ansiblehost, ansiblegroup)
+    with open("/etc/ansible/hosts", "a") as anshostfile:
+        anshostfile.write(ansiblegroup"\n")
+        anshostfile.write(ansiblehost"\n")
     raw_input("Press any key to continue: ")
+
 
