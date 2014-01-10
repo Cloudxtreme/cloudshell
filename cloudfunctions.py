@@ -8,6 +8,7 @@ creds_file = os.path.expanduser("~/.rackspace_creds")
 pyrax.set_credential_file(creds_file)
 cs = pyrax.cloudservers
 
+# Basic listing of servers
 def listservers():
     os.system('clear')
     print "Listing Servers:"
@@ -22,6 +23,7 @@ def listservers():
     else:
         print "No severs found in %s region" % region
 
+# Create one or more servers
 def createservers():
     os.system('clear')
     servers = {}
@@ -40,10 +42,14 @@ def createservers():
     choice = int(raw_input("Enter the number of the flavor you want: "))
     choice -= 1
     flavor = flavors[choice]
+    # TODO: repeat if not a positive integer
     count = int(raw_input("Enter the number of servers you want to create: "))
+    if count is not int():
+        print "ERROR: Please try again"
     base_name = raw_input("Enter a base name for the server: ")
     print "Creating %s %s servers with %s flavor" % (count, image.name, flavor.name)
     time.sleep(5)
+    # Get SSH key TODO: WARN if does not exist
     content = open(os.path.expanduser('~/.ssh/id_rsa.pub')).read()
     sshkey = {"/root/.ssh/authorized_keys": content}
     if count == 1:
@@ -85,6 +91,7 @@ def ansibleAdd():
     print hostentry
     print "Creating /etc/hosts entry for %s" % server.name
     # TODO: put the entry in local /etc/hosts file 
+    os.path.walk('/etc/hosts', append(hostentry))
     print "Creating /etc/ansible/hosts entry for %s" % server.name
     # TODO: Add the node name to ansible hosts file under the correct group
     ansiblehost = server.name
