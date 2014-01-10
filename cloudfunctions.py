@@ -42,10 +42,7 @@ def createservers():
     choice = int(raw_input("Enter the number of the flavor you want: "))
     choice -= 1
     flavor = flavors[choice]
-    # TODO: repeat if not a positive integer
     count = int(raw_input("Enter the number of servers you want to create: "))
-    if count is not int():
-        print "ERROR: Please try again"
     base_name = raw_input("Enter a base name for the server: ")
     print "Creating %s %s servers with %s flavor" % (count, image.name, flavor.name)
     time.sleep(5)
