@@ -91,9 +91,16 @@ def ansibleAdd():
         hostsfile.write(hostentry)
     ansiblehost = server.name
     ansiblegroup = raw_input("What group do you want to add the ansible node to: ")
+    if ansiblegroup in open('/etc/ansible/hosts').read():
+        print "Group already exists"
     print "Adding %s to /etc/ansible/hosts as part of the %s group: " % (ansiblehost, ansiblegroup)
     print hostsfile
-    with open("/etc/ansible/hosts", "a") as anshostfile:
+    if ansiblegroup in open('/etc/ansible/hosts').read():
+        print "Group exists, adding node only"
+        with open("/etc/ansible/hosts", "a") as anshostfile:
+            anshostfile.write(ansiblehost + "\n")
+    else:
+        with open("/etc/ansible/hosts", "a") as anshostfile:
         anshostfile.write("\n" + ansiblegroup + "\n")
         anshostfile.write(ansiblehost + "\n")
     raw_input("Press any key to continue: ")
