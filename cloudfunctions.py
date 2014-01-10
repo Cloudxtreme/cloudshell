@@ -17,6 +17,8 @@ def listservers():
         for i in servers:
             print "Server: %s - IP: %s" % (i.name, i.accessIPv4)
    	    print
+        raw_input("Press any key to return to main menu")
+        return
     else:
         print "No severs found in %s region" % region
 
@@ -42,10 +44,14 @@ def createservers():
     base_name = raw_input("Enter a base name for the server: ")
     print "Creating %s %s servers with %s flavor" % (count, image.name, flavor.name)
     time.sleep(5)
-    for i in xrange(0, count):
-	i += 1
-        name = '%s%s' % (base_name, i)
+    if count == 1:
+	name = base_name
         servers[name] = cs.servers.create(name, image.id, flavor.id)
+    else:
+        for i in xrange(0, count):
+	    i += 1
+            name = '%s%s' % (base_name, i)
+            servers[name] = cs.servers.create(name, image.id, flavor.id)
     
 def connectServer():
     os.system('clear')
