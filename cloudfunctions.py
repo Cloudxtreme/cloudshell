@@ -44,14 +44,18 @@ def createservers():
     base_name = raw_input("Enter a base name for the server: ")
     print "Creating %s %s servers with %s flavor" % (count, image.name, flavor.name)
     time.sleep(5)
+    content = open(os.path.expanduser('~/.ssh/id_rsa.pub')).read()
+    sshkey = {"/root/.ssh/authorized_keys": content}
     if count == 1:
 	name = base_name
-        servers[name] = cs.servers.create(name, image.id, flavor.id)
+#        content = open(os.path.expanduser('~/.ssh/id_rsa.pub')).read()
+#        sshkey = {"/root/.ssh/authorized_keys": content}
+        servers[name] = cs.servers.create(name, image.id, flavor.id, files=sshkey)
     else:
         for i in xrange(0, count):
 	    i += 1
             name = '%s%s' % (base_name, i)
-            servers[name] = cs.servers.create(name, image.id, flavor.id)
+            servers[name] = cs.servers.create(name, image.id, flavor.id, files=sshkey)
     
 def connectServer():
     os.system('clear')
