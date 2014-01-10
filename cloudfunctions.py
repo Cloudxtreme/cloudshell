@@ -71,3 +71,7 @@ def connectServer():
     connection = user + '@' + ip
     os.execlp('ssh', 'ssh', connection)
 
+def ansibleAdd():
+    os.system('clear')
+    print "Choose a server to add to the Ansible master hosts: "
+    listservers()

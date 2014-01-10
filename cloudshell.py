@@ -18,7 +18,7 @@ def menu():
         The following options are available:
     
         1 - List Servers	  8 - Open SSH connection
-        2 - Create Servers	  9 - Feature coming soon
+        2 - Create Servers	  9 - Add node to Ansible
         3 - Create Load Balancer  10 - Feature coming soon
         4 - Cloud Files		  11 - Feature coming soon
         5 - DNS Options		  12 - Feature coming soon
@@ -74,6 +74,12 @@ def menu():
 	cloudfunctions.connectServer()
         time.sleep(1)
 	os.system('clear') 
+    elif int(choice) == 9:
+        print
+        time.sleep(1)
+        cloudfunctions.ansibleAdd()
+        time.sleep(1)
+        os.system('clear')
     else:
 	print
 	time.sleep(1)
