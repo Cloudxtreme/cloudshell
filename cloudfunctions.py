@@ -74,4 +74,12 @@ def connectServer():
 def ansibleAdd():
     os.system('clear')
     print "Choose a server to add to the Ansible master hosts: "
-    listservers()
+    servers = cs.servers.list()
+    for pos, server in enumerate(servers):
+        pos += 1
+        print "%s: %s" % (pos, server.name)
+    choice = int(raw_input("Enter a number: "))
+    choice -= 1
+    server = servers[choice]
+    print "Creating /etc/hosts entry for %" % server.name
+    print "Creating /etc/ansible/hosts entry for %" % server.name
