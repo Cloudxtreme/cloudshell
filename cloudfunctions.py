@@ -84,7 +84,7 @@ def ansibleAdd():
     choice = int(raw_input("Enter a number: "))
     choice -= 1
     server = servers[choice]
-    hostentry = "%s %s" % (server.accessIPv4, server.name)
+    hostentry = "%s %s\n" % (server.accessIPv4, server.name)
     print hostentry
     print "Creating /etc/hosts entry for %s" % server.name
     # TODO: put the entry in local /etc/hosts file 
