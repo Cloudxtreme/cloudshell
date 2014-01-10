@@ -81,5 +81,5 @@ def ansibleAdd():
     choice = int(raw_input("Enter a number: "))
     choice -= 1
     server = servers[choice]
-    print "Creating /etc/hosts entry for %" % server.name
-    print "Creating /etc/ansible/hosts entry for %" % server.name
+    print "Creating /etc/hosts entry for %s" % server.name
+    print "Creating /etc/ansible/hosts entry for %s" % server.name
