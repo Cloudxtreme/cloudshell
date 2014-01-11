@@ -107,6 +107,6 @@ def ansibleAdd():
         with open("/etc/ansible/hosts", "a") as anshostfile:
             anshostfile.write("\n" + ansiblegroup + "\n")
             anshostfile.write(ansiblehost + "\n")
-   raw_input("Press any key to continue: ")
+    raw_input("Press any key to continue: ")
 
 
