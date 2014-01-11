@@ -93,7 +93,7 @@ def ansibleAdd():
     ansiblegroup = raw_input("What group do you want to add the ansible node to: ")
     print "Adding %s to /etc/ansible/hosts as part of the %s group: " % (ansiblehost, ansiblegroup)
     print hostsfile
-    for line in reversed(open("/etc/ansible/hosts").readlines():
+    for line in reversed(open("/etc/ansible/hosts").readlines()):
         if line.rstrip().endswith(ansiblegroup):
             with open("/etc/ansible/hots", "a") as anshostfile:
                 anshostfile.write(ansiblegroup + "\n" + ansiblehost)
