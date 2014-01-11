@@ -95,7 +95,7 @@ def ansibleAdd():
     print hostsfile
     for line in reversed(open("/etc/ansible/hosts").readlines()):
         if line.rstrip().endswith(ansiblegroup):
-            with open("/etc/ansible/hots", "a") as anshostfile:
+            with open("/etc/ansible/hosts", "a") as anshostfile:
                 anshostfile.write(ansiblegroup + "\n" + ansiblehost)
     
 
