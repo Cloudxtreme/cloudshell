@@ -57,7 +57,8 @@ def createservers():
 	    i += 1
             name = '%s%s' % (base_name, i)
             servers[name] = cs.servers.create(name, image.id, flavor.id, files=sshkey)
-    
+
+# open SSH connection    
 def connectServer():
     os.system('clear')
     print "Choose a server to connect to:"
