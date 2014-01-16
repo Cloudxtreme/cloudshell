@@ -98,8 +98,6 @@ def ansibleAdd():
         for line in searchfile:
             if re.search('\[' + ansiblegroup + '\]', line, re.M|re.I):
                 print "%s exists" % ansiblegroup
-            else:
-                print "%s group does not exist" % ansiblegroup
 
 #    print "Adding %s to /etc/ansible/hosts as part of the %s group: " % (ansiblehost, ansiblegroup) #TODO: FIX THIS
 #    for line in reversed(open("/etc/ansible/hosts").readlines()):
