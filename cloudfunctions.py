@@ -2,6 +2,7 @@
 import pyrax
 import time
 import os
+import re
 
 pyrax.settings.set('identity_type', 'rackspace')
 creds_file = os.path.expanduser("~/.rackspace_creds")
