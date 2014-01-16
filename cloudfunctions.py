@@ -93,15 +93,22 @@ def ansibleAdd():
         hostsfile.write(hostentry)
     ansiblehost = server.name
     ansiblegroup = raw_input("What group do you want to add the ansible node to: ")
-    print "Adding %s to /etc/ansible/hosts as part of the %s group: " % (ansiblehost, ansiblegroup) #TODO: FIX THIS
-    for line in reversed(open("/etc/ansible/hosts").readlines()):
-        if line.rstrip().endswith(ansiblegroup):
-            with open("/etc/ansible/hosts", "a") as anshostfile:
-                anshostfile.write(ansiblegroup + "\n" + ansiblehost) #TODO: FIX
-    else:
-        with open("/etc/ansible/hosts", "a") as anshostfile:
-            anshostfile.write("\n" + ansiblegroup + "\n")
-            anshostfile.write(ansiblehost + "\n")
+    with open('/etc/ansible/hosts', 'r+') as searchfile:
+        for line in searchfile:
+            if re.search('\[' + ansiblegroup + '\]', line, re.M|re.I):
+                print "%s exists" % ansiblegroup
+            else:
+                print "%s group does not exist" % ansiblegroup
+
+#    print "Adding %s to /etc/ansible/hosts as part of the %s group: " % (ansiblehost, ansiblegroup) #TODO: FIX THIS
+#    for line in reversed(open("/etc/ansible/hosts").readlines()):
+#        if line.rstrip().endswith(ansiblegroup):
+#            with open("/etc/ansible/hosts", "a") as anshostfile:
+#                anshostfile.write(ansiblegroup + "\n" + ansiblehost) #TODO: FIX
+#    else:
+#        with open("/etc/ansible/hosts", "a") as anshostfile:
+#            anshostfile.write("\n" + ansiblegroup + "\n")
+#            anshostfile.write(ansiblehost + "\n")
     raw_input("Press any key to continue: ")
 
 
