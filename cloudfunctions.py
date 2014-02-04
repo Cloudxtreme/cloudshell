@@ -96,7 +96,7 @@ def ansibleAdd():
     ansiblegroup = raw_input("What group do you want to add the ansible node to: ")
     with open('/etc/ansible/hosts', 'r+') as searchfile:
         for line in searchfile:
-            if re.search('\[' + ansiblegroup + '\]', line, re.M|re.I):
+            if re.search(r"\[" + ansiblegroup + r"\]", line, re.M|re.I):
                 print "%s group found, adding server to group" % ansiblegroup
                 searchfile.write(ansiblehost + "\n") 
 
