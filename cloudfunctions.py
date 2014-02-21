@@ -72,8 +72,7 @@ def connectServer():
     server = servers[choice]
     print "Connecting to  %s " % server.name
     ip = servers[choice].accessIPv4
-    user = raw_input("Username: ")
-    connection = user + '@' + ip
+    connection = 'root' + '@' + ip
     os.execlp('ssh', 'ssh', connection)
 
 # add a host to ansible server
