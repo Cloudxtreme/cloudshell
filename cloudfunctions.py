@@ -5,7 +5,7 @@ import os
 import re
 
 pyrax.settings.set('identity_type', 'rackspace')
-creds_file = os.path.expanduser("~/.rackspace_creds")
+creds_file = os.path.expanduser("~/.rackspace_cloud_credentials")
 pyrax.set_credential_file(creds_file)
 cs = pyrax.cloudservers
 
