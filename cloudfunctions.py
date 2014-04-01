@@ -9,6 +9,12 @@ creds_file = os.path.expanduser("~/.rackspace_cloud_credentials")
 pyrax.set_credential_file(creds_file)
 cs = pyrax.cloudservers
 
+
+if __name__ == '__main__':
+	print 'this prorgram is being run by itself'
+else:
+	print 'I am being imported'
+
 # Basic listing of servers
 def listservers():
     os.system('clear')
