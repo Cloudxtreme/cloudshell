@@ -10,7 +10,6 @@ pyrax.set_credential_file(creds_file)
 cs = pyrax.cloudservers
 
 
-if __name__ == '__main__':
 
 # Basic listing of servers
 def listservers():
