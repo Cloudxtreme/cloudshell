@@ -5,7 +5,7 @@ import cloudfunctions
 import os
 import time
 
-def menu():
+def main():
     print """
     Welcome to CloudShell v0.1.0
     
@@ -89,5 +89,5 @@ def menu():
     return
 
 os.system('clear')
-while True:
-    menu()
+if __name__ == '__main__':
+    main()
