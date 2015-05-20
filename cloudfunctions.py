@@ -1,30 +1,23 @@
 #!/usr/bin/env python
-import pyrax
+import boto.ec2
 import time
 import os
 import re
 
-pyrax.settings.set('identity_type', 'rackspace')
-creds_file = os.path.expanduser("~/.rackspace_cloud_credentials")
-pyrax.set_credential_file(creds_file)
-cs = pyrax.cloudservers
-
-
+ec2 = boto.ec2.connect_to_region("us-east-1")
 
 # Basic listing of servers
 def listservers():
     os.system('clear')
     print "Listing Servers:"
     print "=============================="
-    servers = cs.servers.list()
-    if servers:
-        for i in servers:
-            print "Server: %s - IP: %s" % (i.name, i.accessIPv4)
-   	    print
-        raw_input("Press any key to return to main menu")
-        return
-    else:
-        print "No severs found in %s region" % region
+    reservations = ec2.get_all_instances()
+    for res in reservations:
+    	for inst in res.instances:
+			if 'Name' in inst.tags:
+				print "%s (%s) [%s] %s" % (inst.tags['Name'], inst.private_ip_address, inst.state, inst.id)
+			else:
+				print "No instances in this region" 
 
 # Create one or more servers
 def createservers():

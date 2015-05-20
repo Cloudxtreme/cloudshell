@@ -1,7 +1,6 @@
 #!/usr/bin/env python
-# Testing 1 2 3
 
-import pyrax
+import boto.ec2
 import cloudfunctions
 import os
 import time
